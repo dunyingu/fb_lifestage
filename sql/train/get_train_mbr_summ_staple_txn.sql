@@ -1,0 +1,11 @@
+select 
+distinct 
+GROUP_LOYALTY_MEMBER_NUMBER,
+RESPONSE_DATE,
+total_txn_cnt,
+total_txn_sales_amount as total_spend,
+STAPLE_MERCH_HIER_AGG_TXN_CNT as staple_agg_txn_cnt,
+STAPLE_MERCH_HIER_AGG_SALES_AMOUNT as staple_agg_spend,
+STAPLE_MERCH_HIER_AGG_TXN_FREQ AS staple_agg_freq_ratio,
+STAPLE_MERCH_HIER_AGG_SPEND_RATIO AS staple_agg_spend_ratio
+from ?train_mbr_agg_diff_txn_tbl

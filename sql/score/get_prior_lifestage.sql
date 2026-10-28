@@ -1,0 +1,7 @@
+SELECT DISTINCT 
+GROUP_LOYALTY_MEMBER_NUMBER,
+EFF_FROM_DATE AS last_score_date,
+ROUND(months_between(CURRENT_DATE(),EFF_FROM_DATE),1) AS MONTHS_IN_BETWEEN,
+LIFESTAGE_HIGH_NAME_LABEL AS prior_lifestage_label
+FROM ?lifestage_high_name_typ2_tbl
+where ACTIVE = 1

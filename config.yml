@@ -1,0 +1,52 @@
+lifestage_label_dict: &lifestage_label_dict
+    0: 'SINGLE'
+    1: 'COUPLE_NO_KIDS' 
+    2: 'FAMILY_W_BABY'
+    3: 'FAMILY_W_CHILDREN'
+    4: 'FAMILY_W_BABY_OTHER_CHILDREN'
+    5: 'MULTI-ADULT_FAMILY'
+
+db_tables: &db_tables
+    db: &db exp_all
+    schema: &schema data_science
+    ?src_srvy_tbl: !toupper [PUB_COLES.DL_COLES.ZDEL_GRP_LYLTY_MBR_SRVY_RESP_VW]
+    ?src_mbr_tbl: !toupper [PUB_COLES.DL_COLES.GROUP_LOYALTY_MEMBER_MV]
+    ?src_affluence_tbl: !toupper [PUB_COLES.DL_COLES.AA_AFFLUENCE_MBR_HIST]
+    ?src_rfm_tbl: !toupper [EXP_COLES.ANALYTICS.PR0191_RFM_COLES_TYPE2]
+    ?train_mbr_label_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL
+    ?src_txn_tbl: !toupper [PUB_COLES.DL_COLES.TRANSACTION_PRODUCT_VW] #[FBDL_COLES_CEDWDM.PROCESSED.TRANSACTION_PRODUCT_VW]
+    ?train_mbr_txn_summ_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_TXN_SUMM] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_TXN_SUMM
+    ?src_prod_hier_tbl: !toupper [FBDL_COLES_CEDWDM.PROCESSED.STOCK_KEEPING_UNIT_MV]
+    ?prod_hier_skuplus2_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_SKUPLUS2] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_SKUPLUS2
+    ?prod_hier_skuplus1_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_SKUPLUS1] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_SKUPLUS1
+    ?train_mbr_agg_diff_txn_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_AGG_DIFF_TXN] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_AGG_DIFF_TXN
+    ?train_mbr_agg_diff_ipi_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_AGG_DIFF_FEAT_IPI] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_AGG_DIFF_FEAT_IPI
+    ?train_mbr_nec_ipi_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_NEC_FEAT_IPI] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_NEC_FEAT_IPI
+    ?train_mbr_staple_packsize_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_PACK_SIZE] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_LABEL_DIFF_PACK_SIZE
+    ?src_active_cards_tbl: !toupper [EXP_FLYBUYS.ANALYTICS.PTS_ACTIVE_CARDS_DIM2]
+    ?train_mbr_transition_label_tbl: !toupper [*db,.,*schema,.,GRP_LYLTY_MBR_SRVY_LIFESTAGE_TRANSITIONS] #EXP_ALL.DATA_SCIENCE.GRP_LYLTY_MBR_SRVY_LIFESTAGE_TRANSITIONS
+    ?src_active_mbr_base: !toupper [EXP_ALL.ANALYTICS.ACTIVE_12M_MBR]
+    ?score_mbr_txn_summ_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_TXN_SUMM] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_TXN_SUMM
+    ?score_mbr_agg_diff_txn_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_AGG_DIFF_TXN] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_AGG_DIFF_TXN
+    ?score_mbr_agg_diff_ipi_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_AGG_DIFF_FEAT_IPI] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_AGG_DIFF_FEAT_IPI
+    ?score_mbr_nec_ipi_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_NEC_FEAT_IPI] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_NEC_FEAT_IPI
+    ?score_mbr_staple_packsize_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_DIFF_PACK_SIZE] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_DIFF_PACK_SIZE
+    ?score_output_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_LIFESTAGE_PRED_OUTPUT] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_LIFESTAGE_PRED_OUTPUT
+    ?lifestage_typ2_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_LIFESTAGE_HIST] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_LIFESTAGE_HIST
+    ?lifestage_high_name_typ2_tbl: !toupper [*db,.,*schema,.,ACTIVE_12M_MBR_LIFESTAGE_HIGH_NAME_HIST] #EXP_ALL.DATA_SCIENCE.ACTIVE_12M_MBR_LIFESTAGE_HIGH_NAME_HIST
+
+run_date: &run_date !sys_date
+score_freq: &weeks 13
+
+files: &files
+  feat_label_file: !concat [srvy_lifestage_all_feat_label_,*run_date,.csv]
+  feat_label_filtered_file: !concat [srvy_lifestage_all_feat_label_filter_isf_,*run_date,.csv]
+  train_init_classifier_data_file: !concat [df_train_initi_classifier_,*run_date,.csv]
+  init_classifier_model: !concat [init_classifier_xgboost_model_,*run_date]
+  transition_endpoint: !concat [lifestage-transition-,*run_date]
+  score_output_file: !concat [active_12m_mbr_lifestage_all_score_output_,*run_date,.csv]
+
+email: &email
+  developer: &email_developer "dunyin.gu@flybuys.com.au"
+  stream: &email_stream "Data Science<datascience@flybuys.com.au>"
+  stakeholders: &email_stakeholders "madhura.ganbote@flybuys.com.au, michael.gorman@flybuys.com.au, Akhila.Vemulapalli@flybuys.com.au, Betty.Velentzas@flybuys.com.au, flybuys-program-reporting@flybuys.com.au"

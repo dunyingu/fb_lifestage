@@ -1,0 +1,10 @@
+select 
+distinct 
+to_varchar(GROUP_LOYALTY_MEMBER_NUMBER) as GROUP_LOYALTY_MEMBER_NUMBER,
+SYSTEMDATE,
+LABEL_DIFF_MERCH_HIER_AGG,
+MIN_IPI,
+AVG_IPI,
+MEDIAN_IPI,
+MAX_IPI
+from ?score_mbr_agg_diff_ipi_tbl

@@ -1,0 +1,1 @@
+select max(SYSTEMDATE) as LAST_UPDATE_DATE from ?src_srvy_tbl

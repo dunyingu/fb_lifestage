@@ -1,0 +1,17 @@
+insert into ?lifestage_high_name_typ2_tbl
+	(GROUP_LOYALTY_MEMBER_NUMBER,
+	LIFESTAGE_HIGH_NAME_LABEL,
+	LIFESTAGE_HIGH_NAME,
+	EFF_FROM_DATE,
+	EFF_TO_DATE,
+	ACTIVE) 
+SELECT
+	GROUP_LOYALTY_MEMBER_NUMBER,
+	PRED_LABEL,
+	PRED_LIFESTAGE,
+	SYSTEMDATE,
+	date('9999-12-31'),
+	1
+FROM ?score_output_tbl
+WHERE SYSTEMDATE = CURRENT_DATE()
+and GROUP_LOYALTY_MEMBER_NUMBER not in (select distinct GROUP_LOYALTY_MEMBER_NUMBER from ?lifestage_high_name_typ2_tbl where active=1)

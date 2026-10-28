@@ -1,0 +1,10 @@
+select 
+distinct 
+to_varchar(GROUP_LOYALTY_MEMBER_NUMBER) as GROUP_LOYALTY_MEMBER_NUMBER,
+SYSTEMDATE,
+NEC_SKUPLUS3_MERCH_HIER,
+MIN_IPI,
+AVG_IPI,
+MEDIAN_IPI,
+MAX_IPI
+from ?score_mbr_nec_ipi_tbl

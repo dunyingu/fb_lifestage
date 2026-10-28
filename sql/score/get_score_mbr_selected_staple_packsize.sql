@@ -1,0 +1,7 @@
+select 
+distinct 
+to_varchar(GROUP_LOYALTY_MEMBER_NUMBER) as GROUP_LOYALTY_MEMBER_NUMBER,
+SYSTEMDATE,
+SKUPLUS3_MERCH_HIER_DESC,
+MODE_PACK_SIZE
+from ?score_mbr_staple_packsize_tbl
